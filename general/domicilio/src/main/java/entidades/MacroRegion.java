@@ -2,16 +2,18 @@ package entidades;
 
 import java.util.List;
 
-import abstractos.ElementoDireccion;
-
-public class MacroRegion extends ElementoDireccion {
+public class MacroRegion extends Pais {
 	private List<Region> regiones;
-
+	
+	public MacroRegion() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public MacroRegion(String pais) {
+		super.setNombre(pais);
+	}
+	
 	public List<Region> getRegiones() {
 		return regiones;
-	}
-
-	public void setRegiones(List<Region> region) {
-		this.regiones = region;
 	}
 }

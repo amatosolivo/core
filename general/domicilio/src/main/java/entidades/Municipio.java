@@ -2,16 +2,18 @@ package entidades;
 
 import java.util.List;
 
-import abstractos.ElementoDireccion;
-
-public class Municipio extends ElementoDireccion {
+public class Municipio extends Provincia {
 	private List<DistritoMunicipal> distritosMunicipales;
-
+	
+	public Municipio() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Municipio(String provincia) {
+		super.setNombre(provincia);
+	}
+	
 	public List<DistritoMunicipal> getDistritosMunicipales() {
 		return distritosMunicipales;
-	}
-
-	public void setDistritosMunicipales(List<DistritoMunicipal> distritosMunicipales) {
-		this.distritosMunicipales = distritosMunicipales;
 	}
 }

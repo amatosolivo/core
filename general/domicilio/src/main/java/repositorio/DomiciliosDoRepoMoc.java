@@ -4,6 +4,7 @@ import java.util.List;
 
 import contratos.DomiciliosDo;
 import entidades.BarrioParajeSector;
+import entidades.Calle;
 import entidades.Capital;
 import entidades.DistritoMunicipal;
 import entidades.MacroRegion;
@@ -12,10 +13,34 @@ import entidades.Provincia;
 import entidades.Region;
 import entidades.Seccion;
 import entidades.SubBarrioParajeSector;
+import entidades.TipoCalle;
 
 public class DomiciliosDoRepoMoc implements DomiciliosDo {
 
-	public Region getRegionesPorMacroRegion(MacroRegion macroRegion) {
+	public void Adicionar(MacroRegion macroRegion) {
+		Calle calle = new Calle();
+		
+		calle.setTipoCalle(TipoCalle.CARRETERA);
+		calle.setNombre("Mella");
+		calle.setSubBarrioParajeSector("NoDefinido");
+		calle.setBarrioParajeSector("El Almendro");
+		
+		
+ 
+		// TODO Como decir que la calle es de un SubBarrio		
+	}
+
+	public boolean Borrar(int domicilioId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean Actualizar(MacroRegion macroRegion) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<Region> getRegionesPorMacroRegion(MacroRegion macroRegion) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -56,17 +81,12 @@ public class DomiciliosDoRepoMoc implements DomiciliosDo {
 		return null;
 	}
 
-	public void Adicionar(MacroRegion macroRegion) {
-		
-		// TODO Auto-generated method stub		
-	}
-
-	public boolean Borrar(int domicilioId) {
+	public <T> void Adicionar() {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
-	public boolean Actualizar(MacroRegion macroRegion) {
+	public <T> boolean Actualizar() {
 		// TODO Auto-generated method stub
 		return false;
 	}
