@@ -1,11 +1,12 @@
 package entidades;
 
-public final class Calle extends SubBarrioParajeSector {
+public final class Calle {
 	private TipoCalle tipoCalle;
 	
 	public Calle() {
-		// TODO Auto-generated constructor stub
 	}
+
+	private Class<?> padre;
 
 	public TipoCalle getTipoCalle() {
 		return tipoCalle;
@@ -14,8 +15,12 @@ public final class Calle extends SubBarrioParajeSector {
 	public void setTipoCalle(TipoCalle tipoCalle) {
 		this.tipoCalle = tipoCalle;
 	}
-	
-	public void setSubBarrioParajeSector (String subBarrio) {
-		super.setNombre(subBarrio);
+
+	public Class<?> getPadre() {
+		return padre;
+	}
+
+	public void setPadre(Class<?> padre) {
+		this.padre = padre;
 	}
 }

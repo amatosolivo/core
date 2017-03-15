@@ -1,0 +1,131 @@
+SPRING BOOT - BOOTSTRAP - SPRING DATA JPA
+-----------------------------------------
+1)
+Nuevo proyecto MAVEN de tipo ARCHETYPE WEBSITE
+
+2)
+Se actualizo el BuildPath del proyecto bajo la pestana de LIBRARY de 1.5 a 1.8
+
+3)
+Se actualizaron las dependencias de la configuracion del POM a la siguiente al iniciar el proyecto
+
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.2.RELEASE</version>
+	</dependency>
+
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+
+4) 
+Se creo la clase de inicio de Spring
+	package citamedica;
+
+	import org.springframework.boot.SpringApplication;
+	import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+	@SpringBootApplication
+	public class Application {
+
+		public static void main(String[] args) {
+			SpringApplication.run(Application.class, args);
+		}
+
+	}
+
+5) 
+Se creo un controller de ejemplo para probar
+	package citamedica.controller;
+
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.RestController;
+
+	@RestController
+	public class SampleRestController {
+
+		@GetMapping("/")
+		public String saludar() {
+			return "Hola mundo!";
+		}
+	}
+
+6) 
+Se ejecuto el proyecto con RUN AS / JAVA APPLICATION
+
+7)
+Configurando JSP con Spring, creando un archivo "application.properties" bajo "src/main/resources" con las siguientes propiedades
+	spring.mvc.view.prefix=/WEB-INF/jsp/
+	spring.mvc.view.suffix=.jsp
+
+8)
+Borramos el archivo "web.xml" de la ruta src/main/webapp/WEB-INF
+
+9)
+Creamos un folder nombrado "jsp" bajo WEB-INF y movemos el archivo index.jsp a esa carpeta
+
+10)
+Creamos el controlador principal Main.class en el cual definimos un metodo que apuntara al index.jsp de forma automatica
+
+	package citamedica.controller;
+
+	import org.springframework.stereotype.Controller;
+	import org.springframework.web.bind.annotation.GetMapping;
+
+	// El URL mapping sera manejado por el DISPACHER SERVLET
+	@Controller
+	public class MainController {
+		
+		@GetMapping("/") // Esta ruta debe ser unica
+		public String home() {
+			return "index";
+		}
+	}
+
+11)
+Como empezamos a usar JSP necesitamos la dependencia de JASPER
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>8.5.11</version>
+		</dependency>
+
+12)
+En la carga de esta dependencia MAVEN arroja un error y hay que acutalizar org.eclipse.wst.common.project.facet.core.xml
+- Para esto mostramos la vista NAVIGATOR en WINDOW dentro de Eclipse
+- Luego entramos a settings
+- Luego en la vista SOURCE
+- Cambiamos la version a "3.1"
+	<installed facet="jst.web" version="3.1"/>
+
+
+13)
+Ejecutamos la aplicacion y comprobamos que ahora se carga la pagina index.jsp automaticamente con el nuevo mensaje
+
+14) == Agregando JPA ==
+Agregamos las siguientes dependencias
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>1.5.2.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mariadb.jdbc</groupId>
+			<artifactId>mariadb-java-client</artifactId>
+			<version>1.1.7</version>
+		</dependency>
+
+Necesitamos crear una base de datos, preferiblemente en MYSQL o MariaDB
+
+ALTER TABLE `CitaMedica`.`persona` CHANGE COLUMN `registrado` `registrado` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP() ;
+
+
