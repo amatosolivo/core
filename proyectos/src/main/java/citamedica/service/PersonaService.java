@@ -33,6 +33,10 @@ public class PersonaService {
 		personaRepository.save(persona);
 	}
 
+	public Persona buscar(int id) {
+		return personaRepository.findOne(id);
+	}
+
 	public void borrar(int id){
 		personaRepository.delete(id);
 	}
